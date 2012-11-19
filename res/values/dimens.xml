@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="textsize_clock">40dp</dimen>
+    <dimen name="WeatherIconSize">52px</dimen>
+    <dimen name="textsize_temp">32dp</dimen>
+    <dimen name="textsize_current_temp">40dp</dimen>
+    <dimen name="textsize_current_desc">40dp</dimen>
+    <dimen name="left_margin_title">20px</dimen>
+    <dimen name="left_margin">30px</dimen>
+    <dimen name="text_margin">10px</dimen>
+    <dimen name="textsize_title">32dp</dimen>
+    <dimen name="textsize_metro">24dp</dimen>
+    <dimen name="textsize_weather">24dp</dimen>
+</resources>

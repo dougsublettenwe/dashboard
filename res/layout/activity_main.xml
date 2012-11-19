@@ -1,0 +1,241 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <DigitalClock
+        android:id="@+id/digitalClock1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="@dimen/textsize_clock" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/digitalClock1" >
+   
+    <TextView
+        android:id="@+id/currentTempText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/placeholder_temp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="@dimen/textsize_current_temp" />
+
+    <TextView
+        android:id="@+id/currentDescText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/text_margin"
+        android:text="@string/placeholder_weather_desc"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="@dimen/textsize_current_desc" />
+
+    <ImageView
+        android:id="@+id/currentImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/text_margin"
+        android:contentDescription="@string/weather_icon_desc"
+        android:maxHeight="@dimen/WeatherIconSize"
+        android:maxWidth="@dimen/WeatherIconSize"
+        android:src="@android:drawable/ic_menu_camera" />
+ 	</LinearLayout>
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/left_margin_title"
+        android:layout_below="@+id/linearLayout1"
+        android:text="@string/string_today"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="@dimen/textsize_title" />
+
+    <TextView
+        android:id="@+id/todayHighText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/left_margin"
+        android:layout_below="@+id/textView3"
+        android:text="@string/placeholder_temp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/color_high_temp"
+        android:textSize="@dimen/textsize_temp" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/todayHighText"
+        android:layout_marginLeft="@dimen/text_margin"
+        android:layout_toRightOf="@+id/todayHighText"
+        android:text="@string/string_slash"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="@dimen/textsize_temp" />
+
+    <TextView
+        android:id="@+id/todayLowText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textView5"
+        android:layout_marginLeft="@dimen/text_margin"
+        android:layout_toRightOf="@+id/textView5"
+        android:text="@string/placeholder_temp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/color_temp_low"
+        android:textSize="@dimen/textsize_temp" />
+
+    <TextView
+        android:id="@+id/todayDescText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/todayHighText"
+        android:layout_marginLeft="@dimen/left_margin"
+        android:text="@string/placeholder_weather_desc"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="@dimen/textsize_weather" />
+
+    <ImageView
+        android:id="@+id/todayImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/todayHighText"
+        android:layout_alignBottom="@+id/todayDescText"
+        android:layout_marginLeft="@dimen/text_margin"
+        android:layout_toRightOf="@+id/todayDescText"
+        android:contentDescription="@string/weather_icon_desc"
+        android:maxHeight="@dimen/WeatherIconSize"
+        android:maxWidth="@dimen/WeatherIconSize"
+        android:src="@android:drawable/ic_menu_camera" />
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/left_margin_title"
+        android:layout_below="@+id/todayImage"
+        android:text="@string/string_tomorrow"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="@dimen/textsize_title" />
+
+    <TextView
+        android:id="@+id/tomorrowHighText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/left_margin"
+        android:layout_below="@+id/TextView01"
+        android:text="@string/placeholder_temp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/color_high_temp"
+        android:textSize="@dimen/textsize_temp" />
+
+    <TextView
+        android:id="@+id/TextView03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tomorrowHighText"
+        android:layout_alignBottom="@+id/tomorrowHighText"
+        android:layout_marginLeft="@dimen/text_margin"
+        android:layout_toRightOf="@+id/tomorrowHighText"
+        android:text="@string/string_slash"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="@dimen/textsize_temp" />
+
+    <TextView
+        android:id="@+id/tomorrowLowText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/TextView03"
+        android:layout_alignBottom="@+id/TextView03"
+        android:layout_marginLeft="@dimen/text_margin"
+        android:layout_toRightOf="@+id/TextView03"
+        android:text="@string/placeholder_temp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/color_temp_low"
+        android:textSize="@dimen/textsize_temp" />
+
+    <TextView
+        android:id="@+id/tomorrowDescText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tomorrowHighText"
+        android:layout_marginLeft="@dimen/left_margin"
+        android:text="@string/placeholder_weather_desc"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="@dimen/textsize_weather" />
+
+    <ImageView
+        android:id="@+id/tomorrowImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tomorrowHighText"
+        android:layout_alignBottom="@+id/tomorrowDescText"
+        android:layout_marginLeft="@dimen/text_margin"
+        android:layout_toRightOf="@+id/tomorrowDescText"
+        android:contentDescription="@string/weather_icon_desc"
+        android:maxHeight="@dimen/WeatherIconSize"
+        android:maxWidth="@dimen/WeatherIconSize"
+        android:src="@android:drawable/ic_menu_camera" />
+    
+	<TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/left_margin_title"
+            android:layout_below="@+id/tomorrowImage"
+            android:text="@string/string_bikeshare"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="@dimen/textsize_title" />
+
+    <TextView
+            android:id="@+id/bikeshareText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/left_margin"
+            android:layout_below="@+id/textView2"
+            android:text="@string/placeholder_bikeshare"
+            android:textSize="@dimen/textsize_metro" />
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/left_margin_title"
+        android:layout_below="@+id/bikeshareText"
+        android:text="@string/string_metro"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="@dimen/textsize_title" />
+    
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/left_margin"
+        android:layout_below="@+id/textView10" >
+
+        <TextView
+            android:id="@+id/metroLine1Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/left_margin"
+            android:text="@string/placeholder_metro"
+            android:textSize="@dimen/textsize_metro" />
+
+        <TextView
+            android:id="@+id/metroLine2Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/text_margin"
+            android:text="@string/placeholder_metro"
+            android:textSize="@dimen/textsize_metro" />
+
+        
+
+    </RelativeLayout>
+
+    
+
+</RelativeLayout>

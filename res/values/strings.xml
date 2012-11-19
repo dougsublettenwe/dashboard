@@ -1,0 +1,20 @@
+<resources>
+
+    <string name="app_name">Dashboard</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">Dashboard</string>
+    <string name="string_current">Current</string>
+    <string name="placeholder_temp">0º F</string>
+    <string name="placeholder_weather_desc">Sunny</string>
+    <string name="weather_icon_desc">Weather Icon</string>
+    <string name="string_today">Today</string>
+    <string name="string_slash">/</string>
+    <string name="string_tomorrow">Tomorrow</string>
+    <color name="color_high_temp">#FF0000</color>
+    <color name="color_temp_low">#0000FF</color>
+    <string name="string_metro">Metro</string>
+    <string name="placeholder_metro">10 Glenmont\n15 Glenmont</string>
+    <string name="string_bikeshare">Bikeshare</string>
+    <string name="placeholder_bikeshare">1st &amp; M St NE - 8 Bikes, 2 Docks</string>
+
+</resources>
