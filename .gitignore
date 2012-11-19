@@ -1,4 +1,6 @@
-/distribution
+/bin
+/gen
+/res/values/secrets.xml
 
 *~
 *.lock
