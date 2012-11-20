@@ -13,6 +13,7 @@ import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.text.Html;
+import android.text.SpannableString;
 import android.util.Log;
 import android.view.Menu;
 import android.view.WindowManager;
@@ -64,6 +65,10 @@ public class MainActivity extends Activity {
         }
 	};
 	private void updateUI() {
+		StringBuilder sbMetro1 = new StringBuilder("");
+		StringBuilder sbMetro2 = new StringBuilder("");
+		
+		// update temperature
 		((TextView) findViewById(R.id.currentTempText)).setText(weather.currentTemp + "¼ F");
 		((TextView) findViewById(R.id.currentDescText)).setText(weather.currentDesc);
 		((TextView) findViewById(R.id.todayHighText)).setText(weather.todayHigh + "¼ F");
@@ -75,35 +80,34 @@ public class MainActivity extends Activity {
 		((ImageView) findViewById(R.id.currentImage)).setImageResource(res.getIdentifier("weather" + weather.currentCode, "drawable", getPackageName()));
 		((ImageView) findViewById(R.id.todayImage)).setImageResource(res.getIdentifier("weather" + weather.todayCode, "drawable", getPackageName()));
 		((ImageView) findViewById(R.id.tomorrowImage)).setImageResource(res.getIdentifier("weather" + weather.tomorrowCode, "drawable", getPackageName()));
-		((TextView) findViewById(R.id.metroLine1Text)).setText("");
-		((TextView) findViewById(R.id.metroLine2Text)).setText("");
+		
+		// update WMATA
 		for (WMATATime t : arrivalTimes) {
+			StringBuilder sb;
 			if (t.getLine().equals("1")) {
-				((TextView) findViewById(R.id.metroLine2Text)).append(Html.fromHtml("<b>" + t.getTime() + "</b> " + t.getDestination() + "<br>"));
-			} else if (t.getLine().equals("2")) {
-				((TextView) findViewById(R.id.metroLine1Text)).append(Html.fromHtml("<b>" + t.getTime() + "</b> " + t.getDestination() + "<br>"));
+				sb = sbMetro1;
+			} else {
+				sb = sbMetro2;
 			}
-		}
-		// change background color if metro is within 10-8 minutes or 8-5 minutes
-		((TextView) findViewById(R.id.metroLine1Text)).setBackgroundColor(Color.TRANSPARENT);
-		((TextView) findViewById(R.id.metroLine2Text)).setBackgroundColor(Color.TRANSPARENT);
-		for (WMATATime t : arrivalTimes) {
-			if (t.getTimeInt() > 5 && t.getTimeInt() <= 8) {
-				if (t.getLine().equals("1")) {
-					((TextView) findViewById(R.id.metroLine2Text)).setBackgroundColor(Color.RED);
-				} else {
-					((TextView) findViewById(R.id.metroLine1Text)).setBackgroundColor(Color.RED);
-				}
-				break;
+			
+			// change text color if metro is within 10-8 minutes or 8-3 minutes
+			if (t.getTimeInt() > 3 && t.getTimeInt() <= 8) {
+				sb.append("<font color='red'>");
 			} else if (t.getTimeInt() > 8 && t.getTimeInt() <= 10) {
-				if (t.getLine().equals("1")) {
-					((TextView) findViewById(R.id.metroLine2Text)).setBackgroundColor(Color.YELLOW);
-				} else {
-					((TextView) findViewById(R.id.metroLine1Text)).setBackgroundColor(Color.YELLOW);
-				}
-				break;
+				sb.append("<font color='#CD7300'>"); // orange
 			}
+			sb.append("<b>" + t.getTime() + "</b> " + t.getDestination());
+			if (t.getTimeInt() > 3 && t.getTimeInt() <= 10) {
+				sb.append("</font>");
+			}
+			sb.append("<br>");
 		}
+		((TextView) findViewById(R.id.metroLine1Text)).setText(
+				Html.fromHtml(sbMetro1.toString()), TextView.BufferType.SPANNABLE);
+		((TextView) findViewById(R.id.metroLine2Text)).setText(
+				Html.fromHtml(sbMetro2.toString()), TextView.BufferType.SPANNABLE);
+	
+		// update bikeshare
 		((TextView) findViewById(R.id.bikeshareText)).setText("");
 		for (BikeStation s : stations) {
 			((TextView) findViewById(R.id.bikeshareText)).append(s.getStationName() + " - ");

@@ -216,7 +216,7 @@
         android:layout_below="@+id/textView10" >
 
         <TextView
-            android:id="@+id/metroLine1Text"
+            android:id="@+id/metroLine2Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -225,7 +225,7 @@
             android:textSize="@dimen/textsize_metro" />
 
         <TextView
-            android:id="@+id/metroLine2Text"
+            android:id="@+id/metroLine1Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/text_margin"
