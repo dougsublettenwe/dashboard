@@ -67,6 +67,7 @@ public class MainActivity extends Activity {
 	private void updateUI() {
 		StringBuilder sbMetro1 = new StringBuilder("");
 		StringBuilder sbMetro2 = new StringBuilder("");
+		StringBuilder sbBikeshare = new StringBuilder("");
 		
 		// update temperature
 		((TextView) findViewById(R.id.currentTempText)).setText(weather.currentTemp + "¼ F");
@@ -108,28 +109,52 @@ public class MainActivity extends Activity {
 				Html.fromHtml(sbMetro2.toString()), TextView.BufferType.SPANNABLE);
 	
 		// update bikeshare
-		((TextView) findViewById(R.id.bikeshareText)).setText("");
 		for (BikeStation s : stations) {
-			((TextView) findViewById(R.id.bikeshareText)).append(s.getStationName() + " - ");
-			((TextView) findViewById(R.id.bikeshareText)).append(s.getNumBikes() + " Bike");
+			// if home station and less than 4 bikes, change text color
+			if (s.getId().equals(Bikeshare.homeId)) {
+				if (s.getIntNumBikes() < 1) {
+					sbBikeshare.append("<font color='red'>");
+				} else if (s.getIntNumBikes() < 4) {
+					sbBikeshare.append("<font color='#CD7300'>");
+				}
+			} else { // if not home station and less than 4 docks, change text color
+				if (s.getIntNumDocks() < 1) {
+					sbBikeshare.append("<font color='red'>");
+				} else if (s.getIntNumDocks() < 4) {
+					sbBikeshare.append("<font color='#CD7300'>");
+				}
+			}
+			sbBikeshare.append(s.getStationName() + " - ");
+			sbBikeshare.append(s.getNumBikes() + " Bike");
 			try {
 				if (Integer.parseInt(s.getNumBikes()) != 1) {
-					((TextView) findViewById(R.id.bikeshareText)).append("s");
+					sbBikeshare.append("s");
 				}
 			} catch (NumberFormatException e) {
 				 Log.e(TAG, e.getMessage());
 			}
-			((TextView) findViewById(R.id.bikeshareText)).append(", ");
-			((TextView) findViewById(R.id.bikeshareText)).append(s.getNumDocks() + " Dock");
+			sbBikeshare.append(", ");
+			sbBikeshare.append(s.getNumDocks() + " Dock");
 			try {
 				if (Integer.parseInt(s.getNumDocks()) != 1) {
-					((TextView) findViewById(R.id.bikeshareText)).append("s");
+					sbBikeshare.append("s");
 				}
 			} catch (NumberFormatException e) {
 				Log.e(TAG, e.getMessage());
 			}
-			((TextView) findViewById(R.id.bikeshareText)).append("\n");
+			if (s.getId().equals(Bikeshare.homeId)) {
+				if(s.getIntNumBikes() < 4) {
+					sbBikeshare.append("</font>");
+				}
+			} else {
+				if(s.getIntNumDocks() < 4) {
+					sbBikeshare.append("</font>");
+				}
+			}
+			sbBikeshare.append("<br>");
 		}
+		((TextView) findViewById(R.id.bikeshareText)).setText(
+				Html.fromHtml(sbBikeshare.toString()), TextView.BufferType.SPANNABLE);
      }
     
     private class UpdateTask extends TimerTask {

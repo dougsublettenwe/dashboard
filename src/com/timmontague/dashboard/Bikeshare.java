@@ -19,12 +19,12 @@ import android.util.Log;
 
 public class Bikeshare extends DefaultHandler {
 	private final static String TAG = "DASHBOARD";
-	private static final String urlstring = "http://capitalbikeshare.com/data/stations/bikeStations.xml";
+	private final static String urlstring = "http://capitalbikeshare.com/data/stations/bikeStations.xml";
 	private URL url;
 	private ArrayList<BikeStation> stations;
 	private BikeStation station;
 	private String[] ids = { "52", "31" };
-	private String topId = "52";
+	public final static String homeId = "52";
 	
 	private boolean inID = false;
 	private boolean inName = false;
@@ -57,7 +57,7 @@ public class Bikeshare extends DefaultHandler {
 		}
 		// move the topId to the head of the array so it's displayed first
 		for (BikeStation s : stations) {
-			if (s.getId().equals(topId)) {
+			if (s.getId().equals(homeId)) {
 				station = s;
 				break;
 			}
@@ -142,6 +142,26 @@ public class Bikeshare extends DefaultHandler {
 		}
 		public void setNumDocks(String numDocks) {
 			this.numDocks = numDocks;
+		}
+		public int getIntNumBikes() {
+			int n;
+			try {
+				n = Integer.parseInt(numBikes);
+				return n;
+			} catch (NumberFormatException e) {
+				Log.e(TAG, "Number parsing error: " + e.getMessage());
+				return 0;
+			}
+		}
+		public int getIntNumDocks() {
+			int n;
+			try {
+				n = Integer.parseInt(numDocks);
+				return n;
+			} catch (NumberFormatException e) {
+				Log.e(TAG, "Number parsing error: " + e.getMessage());
+				return 0;
+			}
 		}
 	}
 }
