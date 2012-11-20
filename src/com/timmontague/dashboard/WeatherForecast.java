@@ -67,7 +67,6 @@ public class WeatherForecast extends DefaultHandler {
 	}
 	
 	public void update() {
-		Log.i(TAG, "Updating");
 		try {
 			firstDate = true;
 			SAXParserFactory spf = SAXParserFactory.newInstance();
