@@ -61,7 +61,7 @@ public class WMATA extends DefaultHandler {
 		if (qName.trim().equals("AIMPredictionTrainInfo")) {
 			arrivalTime = new WMATATime();
 			isNull = false;
-		} else if (qName.trim().equals("DestinationName")) {
+		} else if (qName.trim().equals("Destination")) {
 			inDestination = true;
 		} else if (qName.trim().equals("Group")) {
 			inGroup = true;
@@ -78,7 +78,7 @@ public class WMATA extends DefaultHandler {
 			if (!isNull) {
 				arrivalTimes.add(arrivalTime);
 			}
-		} else if (qName.trim().equals("DestinationName")) {
+		} else if (qName.trim().equals("Destination")) {
 			inDestination = false;
 		} else if (qName.trim().equals("Group")) {
 			inGroup = false;
